@@ -16,6 +16,10 @@ public:
   // explicit TimeSpan(int Hour = 0, int Minute = 0, int Second = 0);
   explicit TimeSpan(double hour = 0, double minute = 0, double second = 0);
 
+  explicit TimeSpan(double minute = 0, double second = 0);
+  explicit TimeSpan(double second = 0);
+  explicit TimeSpan();
+
   // add
   TimeSpan operator+(const TimeSpan &ts) const;
 
@@ -34,6 +38,24 @@ public:
   // TODO(student)
   // to add operator+=, operator-=, operator<, operator>, operator<=, operator>=
 
+  // add to existing TimeSpan
+  TimeSpan& operator+=(TimeSpan const &ts);
+
+  // subtract from existing TimeSpan
+  TimeSpan& operator-=(TimeSpan const &ts);
+
+  // check if current time is less
+  bool operator<(TimeSpan const &ts);
+
+  // check if current time is greater
+  bool operator>(TimeSpan const &ts);
+
+  // check if current time is less than or equal
+  bool operator<=(TimeSpan const &ts);
+
+  // check if current time is greater than or equal
+  bool operator>=(TimeSpan const &ts);
+
   // hour component of timespan
   int getHour() const;
 
@@ -47,6 +69,12 @@ public:
   bool isPositive() const;
 
 private:
+  int toSeconds() const;
+
+  int hours;
+  int minutes;
+  int seconds;
+  bool isPos;
 };
 
 #endif // ASS2_TIMESPAN_H
