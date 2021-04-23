@@ -19,6 +19,8 @@ ostream &operator<<(ostream &out, const TimeSpan &ts) {
     out << "-";
   }
   out << ts.hours << ":" << ts.minutes << ":" << ts.seconds;
+
+  return out;
 }
 
 // explicit TimeSpan(int Hour = 0, int Minute = 0, int Second = 0);
